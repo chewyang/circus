@@ -2,6 +2,7 @@ package circus.animal;
 
 import circus.animal.Bird;
 
+
 public class Duck extends Bird {
     @Override
     public String speak() {

@@ -3,7 +3,6 @@ package circus;
 import circus.animal.Animal;
 import circus.animal.Bird;
 import circus.animal.Duck;
-import circus.animal.Parrot;
 
 public class Trainer {
     public static void main(String[] args) {
@@ -16,11 +15,9 @@ public class Trainer {
         Animal a = (Animal)b; // upcasting
         getToSpeak(a);
 
-        Duck d2 = (Duck) a; // downcasting makine an animal a duck change from super class to subclass
+        Duck d2 = (Duck) a; // downcasting
         train(new Duck());
-         train(new Parrot());
-//        circus.animal.Animal a2 = new circus.animal.Animal();
-//        circus.animal.Bird b2 = new circus.animal.Bird();
+        // train(new circus.animal.Parrot());
     }
 
     private static void getToSpeak(Animal animal) {
@@ -28,7 +25,7 @@ public class Trainer {
     }
 
     private static void train(Bird bird) {
-        if(bird instanceof Duck) {
+        if (bird instanceof Duck) {
             Duck d = (Duck) bird;
             d.swim();
         }
