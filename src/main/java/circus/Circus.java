@@ -3,12 +3,14 @@ package circus;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
+import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class Circus {
     private static Animal[] animals = {
@@ -51,6 +53,7 @@ public class Circus {
         System.out.println("Total value of equipments " + calculateValue(equipments));
         System.out.println("Total value of animals " + calculateValue(animals));
 
+
         System.out.println(animals.length);
 //        animals[2] = new Duck("Louie");
 //        System.out.println(animals.length);
@@ -69,31 +72,49 @@ public class Circus {
 
         //now printing this arrayList doesnt give an error
         printAnimals(animalArrayList);
-        System.out.println("Number of animals: "+ animalArrayList.size());
-        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //louie has an index of 4
+        System.out.println("Number of animals: " + animalArrayList.size());
+        System.out.println("index of Louie: " + animalArrayList.indexOf(louie)); //louie has an index of 4
 
         //to sort this animals need an comparator
         animalArrayList.sort(Animal.AnimalNameComparator);
 
         printAnimals(animalArrayList);
-        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //louie now has an index of 3
+        System.out.println("index of Louie: " + animalArrayList.indexOf(louie)); //louie now has an index of 3
 
         //removing louie
         animalArrayList.remove(louie);
-        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //returns -1 to show that it does not exist
+        System.out.println("index of Louie: " + animalArrayList.indexOf(louie)); //returns -1 to show that it does not exist
 
         //Arrays.asList, Arrays.toString, Arrays.copyOf
 
         //collections object - group multiple elements of some type into a single unit
-            //made up of lists like arraylist, made of set like treeset
+        //made up of lists like arraylist, made of set like treeset
         //Map obeject - made up of hashmaps
-            //HashMap<String, Point> points = new HashMap<>();
-            //points.put("x1",
+        //HashMap<String, Point> points = new HashMap<>();
+        //points.put("x1",
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("duedue");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("puepue");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for (Cage c : cages) {
+            c.release();
+
+        }
     }
 
     private static void printAnimals(ArrayList<Animal> animalArrayList) {
         for (Animal a : animalArrayList) {
             System.out.println(a);
+
+
         }
     }
 }
