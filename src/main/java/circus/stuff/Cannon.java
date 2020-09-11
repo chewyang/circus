@@ -2,7 +2,6 @@ package circus.stuff;
 
 
 
-
 public class Cannon extends Equipment {
 
     public Cannon(int purchasePrice) {
@@ -13,4 +12,5 @@ public class Cannon extends Equipment {
     public int getValue() {
         return purchasePrice / 3;
     }
+
 }

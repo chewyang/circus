@@ -12,4 +12,5 @@ public abstract class Equipment implements Asset {
     public int getValue() {
         return purchasePrice;
     }
+
 }
