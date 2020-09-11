@@ -7,6 +7,9 @@ import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Circus {
     private static Animal[] animals = {
             new Duck("Drake"),
@@ -47,5 +50,50 @@ public class Circus {
         makeAnimalsTalk();
         System.out.println("Total value of equipments " + calculateValue(equipments));
         System.out.println("Total value of animals " + calculateValue(animals));
+
+        System.out.println(animals.length);
+//        animals[2] = new Duck("Louie");
+//        System.out.println(animals.length);
+
+        //creating an arraylist of type animal
+        //converts array of animals to array of type list
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+
+
+        //using inheritance to add a new duck or goose to an animal type
+        animalArrayList.add(new Duck("Goose"));
+        animalArrayList.add(new Parrot("Dolly"));
+
+        Duck louie = new Duck("Louie");
+        animalArrayList.add(louie);
+
+        //now printing this arrayList doesnt give an error
+        printAnimals(animalArrayList);
+        System.out.println("Number of animals: "+ animalArrayList.size());
+        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //louie has an index of 4
+
+        //to sort this animals need an comparator
+        animalArrayList.sort(Animal.AnimalNameComparator);
+
+        printAnimals(animalArrayList);
+        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //louie now has an index of 3
+
+        //removing louie
+        animalArrayList.remove(louie);
+        System.out.println("index of Louie: "+ animalArrayList.indexOf(louie)); //returns -1 to show that it does not exist
+
+        //Arrays.asList, Arrays.toString, Arrays.copyOf
+
+        //collections object - group multiple elements of some type into a single unit
+            //made up of lists like arraylist, made of set like treeset
+        //Map obeject - made up of hashmaps
+            //HashMap<String, Point> points = new HashMap<>();
+            //points.put("x1",
+    }
+
+    private static void printAnimals(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
     }
 }
